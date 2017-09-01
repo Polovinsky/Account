@@ -6,9 +6,11 @@ import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
-public class AccountRepositoryTest {
+public class AccountRepositoryIT {
 
     private AccountRepository repository;
 
@@ -20,7 +22,14 @@ public class AccountRepositoryTest {
 
     @Test
     public void save_withValideObjectAccount_shouldSaveAccount() throws Exception {
-        Account account = null;
+        double limitCredit = 100;
+        double drawLimit = 100;
+        Account account = new Account(limitCredit, drawLimit);
         repository.save(account);
+
+        Account c = repository.findById(1L);
+        assertThat(c, notNullValue());
+        assertThat(c.getLimitCredit(), equalTo(100d));
+        assertThat(c.getLimitDraw(), equalTo(100d));
     }
 }

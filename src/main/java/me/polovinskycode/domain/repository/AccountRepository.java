@@ -1,6 +1,7 @@
 package me.polovinskycode.domain.repository;
 
 import me.polovinskycode.domain.model.Account;
+import me.polovinskycode.infrastructure.persistence.JPAUtil;
 import org.hibernate.Session;
 
 public class AccountRepository implements Repository<Account> {
@@ -8,7 +9,7 @@ public class AccountRepository implements Repository<Account> {
     private Session session;
 
     public AccountRepository() {
-
+        this.session = JPAUtil.session();
     }
 
     public AccountRepository(Session session) {
@@ -16,22 +17,22 @@ public class AccountRepository implements Repository<Account> {
     }
 
     @Override
-    public Account find(Long id) {
-        return null;
+    public Account findById(Long id) {
+        return session.find(Account.class, id);
     }
 
     @Override
-    public Account save(Account account) {
-        return null;
+    public void save(Account account) {
+        session.save(account);
     }
 
     @Override
-    public Account update(Account account) {
-        return null;
+    public void update(Account account) {
+        session.update(account);
     }
 
     @Override
-    public void delete(Long id) {
-
+    public void delete(Account account) {
+        session.delete(account);
     }
 }

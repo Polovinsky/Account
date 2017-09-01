@@ -6,40 +6,40 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue(generator = "account")
     @GenericGenerator(name = "account", strategy = "increment")
-    private long id;
+    private Long id;
 
     @Column
-    private double limitCredit;
+    private Double limitCredit;
 
     @Column
-    private double limitDraw;
+    private Double limitDraw;
 
     public Account() {
 
     }
 
-    public Account(long id, double limitCredit, double limitDraw) {
-        this.id = id;
+    public Account(Double limitCredit, Double limitDraw) {
         this.limitCredit = limitCredit;
         this.limitDraw = limitDraw;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public double getLimitCredit() {
+    public Double getLimitCredit() {
         return limitCredit;
     }
 
-    public double getLimitDraw() {
+    public Double getLimitDraw() {
         return limitDraw;
     }
 }

@@ -2,11 +2,11 @@ package me.polovinskycode.domain.repository;
 
 public interface Repository<T> {
 
-    T find(Long id);
+    T findById(Long id);
 
-    T save(T t);
+    void save(T t);
 
-    T update(T t);
+    void update(T t);
 
-    void delete(Long id);
+    void delete(T t);
 }
