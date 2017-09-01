@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://ec2-107-22-211-182.compute-1.amazonaws.com:5432/d5nml82jthnokl?sslmode=require</property>
+        <property name="hibernate.connection.username">xxmruhwjpvoloh</property>
+        <property name="hibernate.connection.password">ee2e71c0d7f05fff554b7e4cfaaf66f4a8bc41de832a3a9632abe1270fdd5535</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="me.polovinskycode.domain.model.Account" />
+    </session-factory>
+</hibernate-configuration>
