@@ -38,18 +38,4 @@ public class AccountRepositoryIT {
         Account account = repository.findById(1L);
         assertThat(account, nullValue());
     }
-
-    @Test
-    public void findAll_shouldReturnAccounts() throws Exception {
-        Account account1 = new AccountBuilder().credit(100d).draw(100d).build();
-        Account account2 = new AccountBuilder().credit(200d).draw(200d).build();
-        Account account3 = new AccountBuilder().credit(300d).draw(300d).build();
-
-        repository.save(account1);
-        repository.save(account2);
-        repository.save(account3);
-
-        List<Account> accounts = repository.findAll();
-        assertThat(accounts, hasSize(3));
-    }
 }

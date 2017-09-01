@@ -5,9 +5,6 @@ import me.polovinskycode.domain.builder.AccountBuilder;
 import me.polovinskycode.domain.model.Account;
 import me.polovinskycode.domain.repository.AccountRepository;
 import me.polovinskycode.infrastructure.transformer.JsonTransformer;
-import spark.Request;
-import spark.Response;
-import spark.Route;
 
 import java.util.logging.Logger;
 
@@ -19,13 +16,12 @@ public class API {
     private static Logger log = Logger.getLogger(API.class.getName());
 
     public static void main(String... args) {
-        port(Integer.valueOf(
-                getenv("PORT") == null ? "4567" : getenv("PORT")));
+        port(Integer.valueOf(getenv("PORT") == null ? "4567" : getenv("PORT")));
 
         path("/api", () -> {
             AccountRepository accountRepository = new AccountRepository();
 
-            before("/*", (q, a) -> log.info("Received api call"));
+            before("/*", (q, a) -> a.header("Access-Control-Allow-Origin", "*"));
 
             get("/v1/accounts/limits/:id", (q, a) -> {
                 String idAccount = q.params(":id");
