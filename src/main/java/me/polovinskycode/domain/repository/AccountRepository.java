@@ -4,6 +4,8 @@ import me.polovinskycode.domain.model.Account;
 import me.polovinskycode.infrastructure.persistence.JPAUtil;
 import org.hibernate.Session;
 
+import java.util.List;
+
 public class AccountRepository implements Repository<Account> {
 
     private Session session;
@@ -19,6 +21,11 @@ public class AccountRepository implements Repository<Account> {
     @Override
     public Account findById(Long id) {
         return session.find(Account.class, id);
+    }
+
+    @Override
+    public List<Account> findAll() {
+        return null;
     }
 
     @Override

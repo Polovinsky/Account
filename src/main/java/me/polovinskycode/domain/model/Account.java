@@ -22,7 +22,7 @@ public class Account implements Serializable {
     @Column
     private Double limitDraw;
 
-    public Account() {
+    Account() {
 
     }
 
