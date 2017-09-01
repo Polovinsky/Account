@@ -8,9 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class JPAUtil {
 
-    private Session session;
-
-    public static Session session() {
+    public static Session getSession() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         Session session = sessionFactory.openSession();

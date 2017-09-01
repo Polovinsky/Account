@@ -16,7 +16,7 @@ public class AccountRepositoryIT {
 
     @Before
     public void setUp() throws Exception {
-        Session session = JPAUtil.session();
+        Session session = JPAUtil.getSession();
         repository = new AccountRepository(session);
     }
 

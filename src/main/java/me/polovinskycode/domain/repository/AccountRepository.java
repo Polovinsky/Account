@@ -9,7 +9,7 @@ public class AccountRepository implements Repository<Account> {
     private Session session;
 
     public AccountRepository() {
-        this.session = JPAUtil.session();
+        this.session = JPAUtil.getSession();
     }
 
     public AccountRepository(Session session) {
