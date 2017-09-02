@@ -3,11 +3,11 @@ package me.polovinskycode;
 import com.google.gson.Gson;
 import me.polovinskycode.domain.builder.AccountBuilder;
 import me.polovinskycode.domain.model.Account;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 public class APITestAcceptance {
@@ -34,7 +34,7 @@ public class APITestAcceptance {
                         .getBody().print();
         Account account = gson.fromJson(json, Account.class);
 
-        assertThat(account.getLimitDraw(), Matchers.equalTo(100d));
-        assertThat(account.getLimitCredit(), Matchers.equalTo(100d));
+        assertThat(account.getLimitDraw(), equalTo(100d));
+        assertThat(account.getLimitCredit(), equalTo(100d));
     }
 }

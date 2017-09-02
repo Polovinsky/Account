@@ -6,14 +6,10 @@ import me.polovinskycode.domain.model.Account;
 import me.polovinskycode.domain.repository.AccountRepository;
 import me.polovinskycode.infrastructure.transformer.JsonTransformer;
 
-import java.util.logging.Logger;
-
 import static java.lang.System.getenv;
 import static spark.Spark.*;
 
 public class API {
-
-    private static Logger log = Logger.getLogger(API.class.getName());
 
     public static void main(String... args) {
         port(Integer.valueOf(getenv("PORT") == null ? "4567" : getenv("PORT")));
