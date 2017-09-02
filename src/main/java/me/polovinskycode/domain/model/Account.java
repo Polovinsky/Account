@@ -42,4 +42,12 @@ public class Account implements Serializable {
     public Double getLimitDraw() {
         return limitDraw;
     }
+
+    public void setLimitCredit(Double limitCredit) {
+        this.limitCredit = limitCredit;
+    }
+
+    public void setLimitDraw(Double limitDraw) {
+        this.limitDraw = limitDraw;
+    }
 }

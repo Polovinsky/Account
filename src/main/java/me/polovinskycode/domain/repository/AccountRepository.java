@@ -1,6 +1,5 @@
 package me.polovinskycode.domain.repository;
 
-import me.polovinskycode.domain.builder.AccountBuilder;
 import me.polovinskycode.domain.model.Account;
 import me.polovinskycode.infrastructure.persistence.JPAUtil;
 import org.hibernate.Session;
@@ -47,9 +46,9 @@ public class AccountRepository implements Repository<Account> {
 
     public Account receiveLimit(Long id, Double limitCredit, Double limitDraw) {
         Account account = findById(id);
-        Double c = add(account.getLimitCredit(), limitCredit);
-        Double d = add(account.getLimitDraw(), limitDraw);
-        return new AccountBuilder().credit(c).draw(d).build();
+        account.setLimitCredit(add(account.getLimitCredit(), limitCredit));
+        account.setLimitDraw(add(account.getLimitDraw(), limitDraw));
+        return account;
     }
 
     private Double add(Double limit, Double receive) {
