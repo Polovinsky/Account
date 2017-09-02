@@ -24,11 +24,14 @@ public class API {
                 return accountRepository.findById(Long.valueOf(idAccount));
             }, new JsonTransformer());
 
-            patch("/v1/accounts/:id", (q, a) -> {
+            patch("/v1/accounts/:id", "application/json", (q, a) -> {
                 String idAccount = q.params(":id");
-                Account account = accountRepository.findById(Long.valueOf(idAccount));
+                Gson gson = new Gson();
+                String json = q.body();
+                Account c = gson.fromJson(json, Account.class);
+                Account account = accountRepository.receiveLimit(Long.valueOf(idAccount), c.getLimitCredit(), c.getLimitDraw());
                 accountRepository.update(account);
-                return account;
+                return "201";
             });
 
             post("/v1/accounts", "application/json", (q, a) -> {
@@ -40,7 +43,6 @@ public class API {
                         .draw(c.getLimitDraw())
                         .build();
                 accountRepository.save(account);
-
                 return "201";
             });
         });

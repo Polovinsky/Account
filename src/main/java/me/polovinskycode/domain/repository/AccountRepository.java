@@ -47,14 +47,13 @@ public class AccountRepository implements Repository<Account> {
 
     public Account receiveLimit(Long id, Double limitCredit, Double limitDraw) {
         Account account = findById(id);
-        Double c = add(limitCredit, account);
-        Double d = add(limitDraw, account);
+        Double c = add(account.getLimitCredit(), limitCredit);
+        Double d = add(account.getLimitDraw(), limitDraw);
         return new AccountBuilder().credit(c).draw(d).build();
     }
 
-    private Double add(Double limit, Account account) {
-        double credit = 0;
-        if (limit != null) credit = account.getLimitCredit() + limit;
-        return credit;
+    private Double add(Double limit, Double receive) {
+        if (receive == null) throw new IllegalArgumentException("Limit not should be null.");
+        return limit + receive;
     }
 }

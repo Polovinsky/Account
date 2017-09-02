@@ -37,4 +37,9 @@ public class APITestAcceptance {
         assertThat(account.getLimitDraw(), equalTo(100d));
         assertThat(account.getLimitCredit(), equalTo(100d));
     }
+
+    @Test
+    public void limits_withValuesPositives_shouldReturnAccount() throws Exception {
+
+    }
 }
