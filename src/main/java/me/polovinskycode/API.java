@@ -31,7 +31,7 @@ public class API {
                 Account c = gson.fromJson(json, Account.class);
                 Account account = accountRepository.receiveLimit(Long.valueOf(idAccount), c.getLimitCredit(), c.getLimitDraw());
                 accountRepository.update(account);
-                return "201";
+                return "created";
             });
 
             post("/v1/accounts", "application/json", (q, a) -> {
@@ -43,7 +43,7 @@ public class API {
                         .draw(c.getLimitDraw())
                         .build();
                 accountRepository.save(account);
-                return "201";
+                return "created";
             });
         });
     }
